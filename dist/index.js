@@ -20327,7 +20327,8 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
     // meeting内容
     if (!githubBody.match(/^\| 投稿予定の会議・論文誌 および 論文締め切り \|/)) {
         if (body_array.length > MAX_ROW) {
-            body_array.slice(0, MAX_ROW).push('...');
+            body_array = body_array.slice(0, MAX_ROW);
+            body_array.push('...');
         }
     }
     // original
