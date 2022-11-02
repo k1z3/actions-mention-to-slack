@@ -26,11 +26,20 @@ export const buildSlackPostMessage = (
   const mentionBlock = slackIdsForMention.map((id) => `<@${id}>`).join(" ");
   const body = convertGithubTextToBlockquotesText(githubBody);
 
+  // original
+  /*
   const message = [
     mentionBlock,
     `${slackIdsForMention.length === 1 ? "has" : "have"}`,
     `been mentioned at <${commentLink}|${issueTitle}> by ${senderName}`,
   ].join(" ");
+  */
+
+  const message = [
+    mentionBlock,
+    ` **${issueTitle}** について ${senderName} からメンションされました :bell:\n`,
+    `<${commentLink}|GitHubで詳細を確認する>`,
+  ].join("");
 
   return `${message}\n${body}`;
 };

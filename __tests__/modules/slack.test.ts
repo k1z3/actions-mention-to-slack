@@ -15,7 +15,8 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> has been mentioned at <link|title> by sender_github_username
+        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+<link|GitHubで詳細を確認する>
 > message`
       );
     });
@@ -30,7 +31,8 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> has been mentioned at <link|title> by sender_github_username
+        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+<link|GitHubで詳細を確認する>
 >
 > > message
 > hello`
@@ -47,7 +49,8 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> has been mentioned at <link|title> by sender_github_username
+        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+<link|GitHubで詳細を確認する>
 > message
 > > hello`
       );

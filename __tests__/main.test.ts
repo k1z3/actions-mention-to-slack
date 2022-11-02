@@ -207,9 +207,9 @@ describe("src/main", () => {
       const call = slackMock.postToSlack.mock.calls[0];
       expect(call[0]).toEqual("dummy_url");
       expect(call[1].includes("<@slack_user_1>")).toEqual(true);
-      expect(call[1].includes("<review_comment_url|pr_title>")).toEqual(true);
+      expect(call[1].includes("pr_title")).toEqual(true);
       expect(call[1].includes("> @github_user_1 LGTM!")).toEqual(true);
-      expect(call[1].includes("by sender_github_username")).toEqual(true);
+      expect(call[1].includes("sender_github_username")).toEqual(true);
     });
 
     it("should not call postToSlack if requested_user is not listed in mapping", async () => {
