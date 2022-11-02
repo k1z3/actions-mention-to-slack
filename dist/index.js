@@ -20325,10 +20325,10 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
     const MAX_ROW = 5;
     let body_array = githubBody.split('\n');
     // meeting内容
-    if (!githubBody.match(/^\| 投稿予定の会議・論文誌 および 論文締め切り \|/)) {
+    if (!githubBody.match(/\| 投稿予定の会議・論文誌 および 論文締め切り \|/)) {
         if (body_array.length > MAX_ROW) {
             body_array = body_array.slice(0, MAX_ROW);
-            body_array.push('...');
+            body_array.push('⋮');
         }
     }
     // original
@@ -20342,11 +20342,11 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
     const header = [
         mentionBlock,
         ` *${issueTitle}* にて *${senderName}* がメンションしました`,
-    ].join("");
+    ].join("\n");
     const footer = [
         `<${commentLink}|GitHubで詳細を確認する>`,
     ].join("");
-    return `${header}\n\n${(0, exports.convertGithubTextToBlockquotesText)(body_array.join('\n'))}\n${footer}`;
+    return `${header}\n${(0, exports.convertGithubTextToBlockquotesText)(body_array.join('\n'))}\n${footer}`;
 };
 exports.buildSlackPostMessage = buildSlackPostMessage;
 const openIssueLink = "https://github.com/k1z3/actions-mention-to-slack/issues/new";
