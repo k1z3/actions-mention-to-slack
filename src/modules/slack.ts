@@ -24,7 +24,13 @@ export const buildSlackPostMessage = (
   senderName: string
 ): string => {
   const mentionBlock = slackIdsForMention.map((id) => `<@${id}>`).join(" ");
-  const body = convertGithubTextToBlockquotesText(githubBody);
+  const MAX_ROW = 5;
+  let body_array = githubBody.split('\n');
+
+  // meeting内容
+  if (!githubBody.match(/^\| 投稿予定の会議・論文誌 および 論文締め切り \|/)) {
+    if (body_array.length > MAX_ROW) { body_array.slice(0, MAX_ROW).push('...') }    
+  }
 
   // original
   /*
@@ -37,14 +43,14 @@ export const buildSlackPostMessage = (
 
   const header = [
     mentionBlock,
-    ` *${issueTitle}* について *${senderName}* がメンションしました`,
+    ` *${issueTitle}* にて *${senderName}* がメンションしました`,
   ].join("");
 
   const footer = [
     `<${commentLink}|GitHubで詳細を確認する>`,
   ].join("");
 
-  return `${header}\n\n${body}\n\n${footer}`;
+  return `${header}\n\n${convertGithubTextToBlockquotesText(body_array.join('\n'))}\n${footer}`;
 };
 
 const openIssueLink =
