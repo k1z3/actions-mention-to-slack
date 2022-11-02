@@ -35,17 +35,20 @@ export const buildSlackPostMessage = (
   ].join(" ");
   */
 
-  const message = [
+  const header = [
     mentionBlock,
-    ` *${issueTitle}* について *${senderName}* がメンションしました :bell:\n`,
+    ` *${issueTitle}* について *${senderName}* がメンションしました`,
+  ].join("");
+
+  const footer = [
     `<${commentLink}|GitHubで詳細を確認する>`,
   ].join("");
 
-  return `${message}\n${body}`;
+  return `${header}\n\n${body}\n\n${footer}`;
 };
 
 const openIssueLink =
-  "https://github.com/abeyuya/actions-mention-to-slack/issues/new";
+  "https://github.com/k1z3/actions-mention-to-slack/issues/new";
 
 export const buildSlackErrorMessage = (
   error: Error,
