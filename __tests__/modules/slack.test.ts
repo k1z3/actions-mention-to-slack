@@ -15,7 +15,7 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+        `<@slackUser1> __title__ について sender_github_username からメンションされました :bell:
 <link|GitHubで詳細を確認する>
 > message`
       );
@@ -31,7 +31,7 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+        `<@slackUser1> __title__ について sender_github_username からメンションされました :bell:
 <link|GitHubで詳細を確認する>
 >
 > > message
@@ -49,7 +49,7 @@ describe("modules/slack", () => {
       );
 
       expect(result).toEqual(
-        `<@slackUser1> **title** について sender_github_username からメンションされました :bell:
+        `<@slackUser1> __title__ について sender_github_username からメンションされました :bell:
 <link|GitHubで詳細を確認する>
 > message
 > > hello`
