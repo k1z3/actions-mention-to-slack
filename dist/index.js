@@ -20341,8 +20341,8 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
     */
     const header = [
         mentionBlock,
-        ` *${issueTitle}* にて *${senderName}* がメンションしました`,
-    ].join("\n");
+        `*${issueTitle}* にて *${senderName}* がメンションしました`,
+    ].join(" ");
     const footer = [
         `<${commentLink}|GitHubで詳細を確認する>`,
     ].join("");
