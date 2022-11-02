@@ -20331,15 +20331,17 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
       `been mentioned at <${commentLink}|${issueTitle}> by ${senderName}`,
     ].join(" ");
     */
-    const message = [
+    const header = [
         mentionBlock,
-        ` *${issueTitle}* について *${senderName}* がメンションしました :bell:\n`,
+        ` *${issueTitle}* について *${senderName}* がメンションしました`,
+    ].join("");
+    const footer = [
         `<${commentLink}|GitHubで詳細を確認する>`,
     ].join("");
-    return `${message}\n${body}`;
+    return `${header}\n\n${body}\n\n${footer}`;
 };
 exports.buildSlackPostMessage = buildSlackPostMessage;
-const openIssueLink = "https://github.com/abeyuya/actions-mention-to-slack/issues/new";
+const openIssueLink = "https://github.com/k1z3/actions-mention-to-slack/issues/new";
 const buildSlackErrorMessage = (error, currentJobUrl) => {
     const jobTitle = "mention-to-slack action";
     const jobLinkMessage = currentJobUrl
