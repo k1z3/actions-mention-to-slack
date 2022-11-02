@@ -20333,7 +20333,7 @@ const buildSlackPostMessage = (slackIdsForMention, issueTitle, commentLink, gith
     */
     const message = [
         mentionBlock,
-        ` **${issueTitle}** について ${senderName} からメンションされました :bell:\n`,
+        ` __${issueTitle}__ について ${senderName} からメンションされました :bell:\n`,
         `<${commentLink}|GitHubで詳細を確認する>`,
     ].join("");
     return `${message}\n${body}`;
