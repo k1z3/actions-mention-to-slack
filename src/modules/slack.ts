@@ -37,7 +37,7 @@ export const buildSlackPostMessage = (
 
   const message = [
     mentionBlock,
-    ` <b>${issueTitle}</b> について ${senderName} からメンションされました :bell:\n`,
+    ` *${issueTitle}* について *${senderName}* がメンションしました :bell:\n`,
     `<${commentLink}|GitHubで詳細を確認する>`,
   ].join("");
 
